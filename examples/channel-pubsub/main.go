@@ -2,24 +2,32 @@ package main
 
 import (
 	"context"
+	"encoding/json"
+	"github.com/hidevopsio/hiboot-messaging/pubsub"
 	"github.com/hidevopsio/hiboot/pkg/log"
 	"github.com/hidevopsio/hiboot/pkg/utils/idgen"
-	"hiboot-messaging/pubsub"
 	"time"
 )
 
 type FooReceivedEvent struct {
-	ID string
-
+	ID   string
 	Name string
+}
+
+func (e *FooReceivedEvent) MarshalBinary() ([]byte, error) {
+	return json.Marshal(e)
+}
+
+func (e *FooReceivedEvent) UnmarshalBinary(data []byte) error {
+	return json.Unmarshal(data, e)
 }
 
 func main() {
 	// Example of creating a new Redis client and RedisPubSub instance
 
-	chnPubSub := pubsub.NewChannelPubSub[FooReceivedEvent]()
+	fooReceivedEventPubSub := pubsub.NewChannelPubSub[*FooReceivedEvent]()
 	ctx := context.Background()
-	ch, err := chnPubSub.Subscribe(ctx, "foo")
+	ch, err := fooReceivedEventPubSub.Subscribe(ctx, "foo")
 	if err != nil {
 		log.Errorf("Error subscribing: %v", err)
 		return
@@ -31,11 +39,11 @@ func main() {
 			time.Sleep(5 * time.Second)
 			var id string
 			id, err = idgen.NextString()
-			event := FooReceivedEvent{
+			event := &FooReceivedEvent{
 				ID:   id,
 				Name: "Test Event",
 			}
-			err = chnPubSub.Publish(ctx, "foo", event)
+			err = fooReceivedEventPubSub.Publish(ctx, "foo", event)
 			if err != nil {
 				log.Error(err)
 			}
