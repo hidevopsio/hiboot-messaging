@@ -34,11 +34,11 @@ type DemoController struct {
 	at.RestController
 	at.RequestMapping `value:"/"`
 
-	pubsub *pubsub.RedisPubSub[*FooReceivedEvent]
+	fooReceivedEventPubSub *pubsub.RedisPubSub[*FooReceivedEvent]
 }
 
-func newDemoController(pubsub *pubsub.RedisPubSub[*FooReceivedEvent]) *DemoController {
-	return &DemoController{pubsub: pubsub}
+func newDemoController(fooReceivedEventPubSub *pubsub.RedisPubSub[*FooReceivedEvent]) *DemoController {
+	return &DemoController{fooReceivedEventPubSub: fooReceivedEventPubSub}
 }
 
 func init() {
@@ -49,7 +49,7 @@ func (c *DemoController) GetSub(redisClient *redis.Client) (err error) {
 	go func() {
 		for {
 			ctx := context.Background()
-			ch, _ := c.pubsub.Subscribe(ctx, redisClient, "foo")
+			ch, _ := c.fooReceivedEventPubSub.Subscribe(ctx, redisClient, "foo")
 			// Start a goroutine to listen for messages
 			select {
 			case msg := <-ch:
@@ -78,7 +78,7 @@ func (c *DemoController) GetPub(redisClient *redis.Client) (response *PublishEve
 		Status: "test",
 	}
 
-	err = c.pubsub.Publish(context.Background(), redisClient, "foo", event)
+	err = c.fooReceivedEventPubSub.Publish(context.Background(), redisClient, "foo", event)
 	if err != nil {
 		log.Error(err)
 	}
