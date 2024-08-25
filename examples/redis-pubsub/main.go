@@ -53,7 +53,7 @@ func (c *DemoController) GetSub(redisClient *redis.Client) (err error) {
 			// Start a goroutine to listen for messages
 			select {
 			case msg := <-ch:
-				log.Infof("Received message: ID=%v, Name=%v, Status: %v", msg.ID, msg.Name, msg.Status)
+				log.Infof("Received message: ID=%v, Name=%v, Status=%v", msg.ID, msg.Name, msg.Status)
 			case <-ctx.Done():
 				log.Infof("Context cancelled, stopping subscription")
 				return

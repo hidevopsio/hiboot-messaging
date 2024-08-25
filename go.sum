@@ -154,8 +154,8 @@ github.com/hidevopsio/golog v0.0.0-20240811115351-6b4a7711e704 h1:+MB2aj5w+IKZum
 github.com/hidevopsio/golog v0.0.0-20240811115351-6b4a7711e704/go.mod h1:PAdSAVsgMTZgHMHR9QU07S+gIJY2D8hc7MNVvhazxNE=
 github.com/hidevopsio/hiboot v1.8.0 h1:Pi504NR0ScsgzStSQ8sen4KnQa5giWnkIB6tDPEwmPc=
 github.com/hidevopsio/hiboot v1.8.0/go.mod h1:YcK507p7irSmiixN7Tc/Lyyj4EO5FW2YZro2BhS5Q2U=
-github.com/hidevopsio/hiboot-data v1.4.1-0.20240819142612-3cf86aa29268 h1:u+C1pRmF3mtH7TFXy/YE4Xuq5Vn49+q/rUMVjOsJt6U=
-github.com/hidevopsio/hiboot-data v1.4.1-0.20240819142612-3cf86aa29268/go.mod h1:qC7ew09BcYCf2HijK1B0TgaWfzSQY4HxrwxPViTVmBw=
+github.com/hidevopsio/hiboot-data v1.4.2 h1:AbTqZ5yayfdNh2+hBB+5ZJZQdc1NjOHqE4VkQBCaZhk=
+github.com/hidevopsio/hiboot-data v1.4.2/go.mod h1:qC7ew09BcYCf2HijK1B0TgaWfzSQY4HxrwxPViTVmBw=
 github.com/hidevopsio/httpexpect v0.0.0-20240811100504-92ed99bc8bec h1:P8Cc0RBRffxmihk8Q6VajQhvZsJ/i1BmtLMqmr+OtSk=
 github.com/hidevopsio/httpexpect v0.0.0-20240811100504-92ed99bc8bec/go.mod h1:bdWZrbWv4cxf1vR3lNiIJ2LBYfVmUAkFDK8ytBubtv8=
 github.com/hidevopsio/i18n v0.0.0-20240811095331-eee3daa5c80f h1:+2IuerGSyOGGQiLe+lGFtmnaFfchXt5k6PfepHqnlEY=

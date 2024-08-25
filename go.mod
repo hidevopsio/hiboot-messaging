@@ -4,7 +4,7 @@ go 1.22.6
 
 require (
 	github.com/hidevopsio/hiboot v1.8.0
-	github.com/hidevopsio/hiboot-data v1.4.1-0.20240819142612-3cf86aa29268
+	github.com/hidevopsio/hiboot-data v1.4.2
 	github.com/redis/go-redis/v9 v9.6.1
 )
 
@@ -82,6 +82,7 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
+
 //
 //replace (
 //	github.com/hidevopsio/hiboot-data => ../hiboot-data
